@@ -4,11 +4,19 @@ from pydantic import BaseModel
 import pandas as pd
 import datetime
 import uvicorn
+from fastapi.middleware.cors import CORSMiddleware
 
 model = joblib.load("model.pkl")
 ml_columns = joblib.load("columns.pkl")
 
 app = FastAPI(title="jmodel")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], # Allows any frontend URL to connect (good for testing)
+    allow_credentials=True,
+    allow_methods=["*"], # This specifically allows the "OPTIONS" method to pass!
+    allow_headers=["*"],
+)
 
 class PredictionRequest(BaseModel):
     date: str

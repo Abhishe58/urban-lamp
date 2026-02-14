@@ -28,12 +28,13 @@ df = df.drop(columns=['Date'])
 
 # df['Product_Name'] = df['Product_Name'].map(product_map)
 
+
 columns_encode = ["Product_Name", "Brand", "Category_Type", "Event_Type"]
 
 df = pd.get_dummies(df, columns=columns_encode, dtype=int)
 
 # print(df.head())
-# print(df.info())
+print(df.info())
 # df.to_csv('updata.csv')
 
 y = df['Units_Sold']
