@@ -2,7 +2,7 @@ import joblib
 from fastapi import FastAPI
 from pydantic import BaseModel
 import pandas as pd
-import datetime
+from datetime import datetime
 import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 
